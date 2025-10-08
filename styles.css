@@ -1,9 +1,9 @@
 /* --- 1. Variables & Global Reset --- */
 :root {
-    --color-dark-green: #1a431c; /* Main Header/Footer/Background Color */
-    --color-light-bg: #f5f4e8; /* Creamy/Off-White Background */
-    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color - Used for icons/CTA hover */
-    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background/Contact text */
+    --color-dark-green: #1a431c; 
+    --color-light-bg: #f5f4e8; 
+    --color-gold-text: #b8860b; 
+    --color-gold-button: #e8c062; 
     --color-text-dark: #333;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Roboto', sans-serif;
@@ -22,7 +22,7 @@ body {
     background-color: #ffffff; 
 }
 
-/* --- 2. Typography & Section Titles --- */
+/* --- 2. Typography & Section Titles (No changes) --- */
 .content-section {
     padding: 80px 20px;
     text-align: center;
@@ -52,7 +52,7 @@ body {
     color: white !important;
 }
 
-/* --- 3. Navigation --- */
+/* --- 3. Navigation (No changes) --- */
 .top-nav-hero {
     position: absolute;
     top: 20px;
@@ -80,11 +80,11 @@ body {
     color: var(--color-gold-button);
 }
 
-/* --- 4. Hero Section --- */
+/* --- 4. Hero Section & Logo Styling (MODIFIED to push text down) --- */
 .hero-section {
     position: relative;
     height: 90vh;
-    background-image: url('placeholder-hero.jpg'); /* Ensure this image is uploaded */
+    background-image: url('placeholder-hero.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -97,22 +97,54 @@ body {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3); 
+    
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around; 
     align-items: center;
-    padding-right: 8%;
+    padding: 0 5%;
+}
+
+.logo-container {
+    flex: 1; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    
+    background-image: url('gb_logo.png'); 
+    background-repeat: no-repeat;
+    background-position: center 20%; 
+    background-size: 70%; 
+}
+
+.gb-meaning-text {
+    color: var(--color-gold-button); 
+    font-family: var(--font-serif); 
+    font-weight: 700;
+    font-size: 2.8em; 
+    
+    /* MAIN CHANGE: Pushed the text further down from the logo image */
+    margin-top: 60%; 
+    
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    text-align: center;
+    line-height: 1.1;
 }
 
 .hero-text {
     color: white;
     max-width: 500px;
     text-align: left;
+    flex: 1; 
+    padding-left: 5%; 
 }
 
 .hero-text h1 {
     font-family: var(--font-serif);
-    font-size: 4.5em;
-    margin-bottom: 15px;
+    font-size: 4.5em; 
+    margin-bottom: 15px; 
     line-height: 1.1;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -122,7 +154,7 @@ body {
     margin-bottom: 40px;
 }
 
-/* --- 5. CTA Button Styling --- */
+/* --- 5. CTA Button Styling (No changes) --- */
 .cta-button {
     display: inline-block;
     background-color: var(--color-gold-button);
@@ -155,7 +187,7 @@ body {
     border-color: white;
 }
 
-/* --- 6. Services Card Layout --- */
+/* --- 6. Services Card Layout (No changes) --- */
 .service-cards {
     display: flex;
     justify-content: space-around;
@@ -191,7 +223,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* --- 7. Gallery Layout --- */
+/* --- 7. Gallery Layout (No changes) --- */
 .gallery {
     max-width: 1200px;
     margin: 40px auto;
@@ -229,7 +261,7 @@ body {
     color: var(--color-text-dark);
 }
 
-/* --- 8. Process Flow (Trust Section) --- */
+/* --- 8. Process Flow (Trust Section) (No changes) --- */
 .process-flow {
     display: flex;
     justify-content: space-between;
@@ -259,7 +291,7 @@ body {
     background-color: var(--color-dark-green);
 }
 
-/* --- 9. Guides & Tips Section --- */
+/* --- 9. Guides & Tips Section (No changes) --- */
 .guide-content {
     max-width: 650px;
     margin: 20px auto;
@@ -287,7 +319,7 @@ body {
     font-size: 1.3em;
 }
 
-/* --- 10. Footer (Contact Bar) Styling - Includes Gold Icons Fix --- */
+/* --- 10. Footer (Contact Bar) Styling (FIXED color issues) --- */
 .contact-bar {
     background-color: var(--color-dark-green);
     color: white; 
@@ -303,11 +335,17 @@ body {
 .contact-bar p {
     margin: 10px 0;
     font-size: 1.1em;
-    color: var(--color-gold-button); /* Phone/Email text color */
+    color: var(--color-gold-button); 
 }
 
 .contact-bar p a {
-    color: inherit; 
+    color: inherit !important; /* Fixes blue/purple link color */
+    text-decoration: none;
+}
+
+.contact-bar i {
+    color: var(--color-gold-button); 
+    margin-right: 8px;
 }
 
 .social-links {
@@ -316,14 +354,13 @@ body {
 }
 
 .social-links a {
-    /* KEY FIX: Social media icons are set to Gold */
-    color: var(--color-gold-text); 
+    color: var(--color-gold-text) !important; /* Fixes blue social icons */
     margin: 0 15px;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #ffffff; /* Icons turn white on hover */
+    color: #ffffff !important; 
 }
 
 .copyright {
@@ -332,10 +369,33 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* --- 11. Media Queries (Responsiveness) --- */
+/* --- 11. Media Queries (Responsiveness) (Modified to reflect main changes) --- */
 @media (max-width: 900px) {
+    .hero-overlay {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 60px;
+    }
+
+    .logo-container {
+        height: 280px; /* Increased height for text movement */
+        background-position: center 10%; /* Move logo up for better text spacing */
+        background-size: 55%;
+    }
+    
+    .gb-meaning-text {
+        /* Adjusted for mobile view, pushing text down */
+        margin-top: 180px; 
+        font-size: 1.8em; 
+    }
+    
+    .hero-text {
+        text-align: center;
+        padding-left: 0;
+        max-width: 90%;
+    }
     .hero-text h1 {
-        font-size: 3.5em;
+        font-size: 3em; 
     }
     .hero-text p {
         font-size: 1.1em;
@@ -348,23 +408,11 @@ body {
         flex-direction: column;
         gap: 30px;
     }
-    .process-step {
-        padding: 0;
-    }
     .gallery {
         justify-content: flex-start;
     }
 }
-
 @media (max-width: 600px) {
-    .hero-overlay {
-        justify-content: center;
-        padding: 0;
-    }
-    .hero-text {
-        text-align: center;
-        max-width: 90%;
-    }
     .top-nav-hero {
         position: static;
         padding-top: 20px;
