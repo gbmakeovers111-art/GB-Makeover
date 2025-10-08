@@ -2,8 +2,8 @@
 :root {
     --color-dark-green: #1a431c; /* Main Header/Footer/Background Color */
     --color-light-bg: #f5f4e8; /* Creamy/Off-White Background */
-    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color */
-    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background */
+    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color - Used for icons/CTA hover */
+    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background/Contact text */
     --color-text-dark: #333;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Roboto', sans-serif;
@@ -19,117 +19,75 @@ body {
     font-family: var(--font-sans);
     color: var(--color-text-dark);
     line-height: 1.6;
-    background-color: #e6e6e6; /* Monitor background color */
+    background-color: #ffffff; 
 }
 
-/* --- 2. Header and Navigation --- */
-.top-header {
+/* --- 2. Typography & Section Titles --- */
+.content-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.8em;
+    color: var(--color-dark-green);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.light-bg {
+    background-color: var(--color-light-bg);
+}
+
+.dark-bg {
     background-color: var(--color-dark-green);
-    color: white;
-    padding: 10px 0;
-    border-bottom: 2px solid var(--color-gold-text);
-}
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
 }
 
-/* Placeholder styling for the GB Logo */
-/* Remove the old logo-placeholder styling (if still present) */
-/* .logo-placeholder { ... } */
-
-/* NEW CSS for the image logo in the header */
-
-.header-image-logo {
-    height: 40px; /* Adjust this value to control the size of the logo */
-    width: auto;
-    /* If your logo is dark and header is dark, you might need a filter: */
-    /* filter: brightness(200%); */
+.white-text {
+    color: white !important;
 }
 
-/* Ensure the link doesn't add extra space */
-.header-logo-link {
-    display: flex; /* Makes the link wrap neatly around the image */
-    align-items: center;
-}
-
-/* --- Ensure other header styles are as desired --- */
-.top-header {
-    background-color: var(--color-dark-green);
-    color: white;
-    padding: 10px 0;
-    border-bottom: 2px solid var(--color-gold-text);
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: flex-start; /* Aligns logo to the left */
-    align-items: center;
-    padding: 0 20px;
-}
-/* Remove or comment out old .top-nav rules if they were specific to header */
-/* .top-nav ul { ... } */
-/* .top-nav li { ... } */
-/* .top-nav a { ... } */
-/* .top-nav a:hover { ... } */
-
-/* NEW CSS for the navigation over the hero background */
+/* --- 3. Navigation --- */
 .top-nav-hero {
-    position: absolute; /* Position relative to .hero-overlay */
-    top: 20px;          /* Distance from the top */
-    right: 5%;          /* Distance from the right edge */
-    z-index: 10;        /* Ensure it's above other elements if necessary */
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    z-index: 10;
 }
 
 .top-nav-hero ul {
     list-style: none;
     display: flex;
-    gap: 20px; /* Space between menu items */
-}
-
-.top-nav-hero li {
-    margin: 0; /* Remove old margins */
+    gap: 25px;
 }
 
 .top-nav-hero a {
     text-decoration: none;
-    color: white; /* Make text white to stand out on dark background */
+    color: white;
     font-weight: 400;
     padding: 5px 0;
     transition: color 0.3s;
+    font-family: var(--font-serif);
+    font-size: 1.1em;
 }
 
 .top-nav-hero a:hover {
-    color: var(--color-gold-button); /* Hover effect */
+    color: var(--color-gold-button);
 }
 
-/* Adjust .hero-overlay and .hero-text if needed to account for the nav */
-.hero-overlay {
-    display: flex; /* Keep flex to position hero-text */
-    justify-content: flex-end; /* Still pushes hero-text to the right */
-    align-items: center; 
-    padding-right: 5%; 
-    padding-top: 60px; /* Adjust padding-top to ensure nav isn't covered by hero-text vertical centering */
-}
-/* --- 3. Hero Section --- */
+/* --- 4. Hero Section --- */
 .hero-section {
     position: relative;
-    height: 90vh; /* Use 90vh to match common hero size */
-    
-    /* CRITICAL CHANGE: Use the correct image path for the dark green background */
-    background-image: url('placeholder-hero.jpg'); 
-    
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center center; 
-    
-    /* Remove text-align: center from here */
+    height: 90vh;
+    background-image: url('placeholder-hero.jpg'); /* Ensure this image is uploaded */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .hero-overlay {
@@ -138,171 +96,285 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    /* Background must be transparent to show the image */
-    background-color: transparent; 
-
-    /* NEW FLEXBOX RULES TO PUSH CONTENT TO THE RIGHT */
+    background-color: rgba(0, 0, 0, 0.3); 
     display: flex;
-    justify-content: flex-end; /* Pushes content to the right edge */
-    align-items: center;      /* Centers content vertically */
-    padding-right: 5%;        /* Adds spacing from the right edge */
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8%;
 }
 
 .hero-text {
     color: white;
-    max-width: 450px; /* Gives the text block a defined size */
-    text-align: left; /* Aligns the content within the hero-text div to the left */
+    max-width: 500px;
+    text-align: left;
 }
 
-/* Ensure these are present for styling the content */
 .hero-text h1 {
     font-family: var(--font-serif);
-    font-size: 4em;
-    margin-bottom: 10px;
-    line-height: 1.2;
+    font-size: 4.5em;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.3em;
+    margin-bottom: 40px;
 }
 
+/* --- 5. CTA Button Styling --- */
 .cta-button {
     display: inline-block;
     background-color: var(--color-gold-button);
     color: var(--color-dark-green);
     text-decoration: none;
     font-weight: 700;
-    padding: 12px 30px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    border: 1px solid transparent;
+    padding: 15px 35px;
+    border-radius: 50px; 
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .cta-button:hover {
+    background-color: var(--color-dark-green);
+    color: white;
+    border-color: var(--color-gold-button);
+}
+
+.gold-cta {
     background-color: var(--color-gold-text);
     color: white;
+    border: 2px solid var(--color-gold-text);
 }
 
-/* --- 4. Content Sections (Remains the same as your code) --- */
-.content-section {
-    padding: 60px 20px;
-    text-align: center;
-}
-/* Guide Content ను సెంటర్‌లో ఉంచడానికి */
-.guide-content {
-    max-width: 600px; /* కంటెంట్‌కు గరిష్ట వెడల్పును సెట్ చేయండి */
-    margin: 20px auto; /* సెంటరింగ్ కోసం */
-    text-align: center; /* బటన్ సెంటర్‌లో రావడానికి */
+.gold-cta:hover {
+    background-color: white;
+    color: var(--color-dark-green);
+    border-color: white;
 }
 
-.guide-list {
-    list-style: none; 
-    padding: 0;
-    text-align: left; /* లిస్ట్ ఐటమ్స్ ఒకే లైన్‌లో ఉండేలా */
-    margin-bottom: 30px;
-}
-
-.guide-list li {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    color: #2e2727; /* డార్క్ బ్యాక్‌గ్రౌండ్‌కు వైట్ టెక్స్ట్ */
-}
-
-/* గోల్డ్ ఐకాన్ స్టైలింగ్ */
-.gold-icon {
-    color: var(--color-gold-button); /* మీ గోల్డ్ కలర్ */
-    margin-right: 10px;
-    font-size: 1.2em;
-}
-
-/* బటన్ స్టైలింగ్ */
-.gold-cta {
-    /* ...ఇంతకు ముందు ఇచ్చిన గోల్డ్ బటన్ స్టైలింగ్ ఇక్కడ ఉంటుంది... */
-}
-.light-bg {
-    background-color: var(--color-light-bg);
-}
-/* ... rest of content sections code ... */
-
-/* Remaining CSS below (omitted for brevity, keep the rest of your original CSS) *//* --- 4. Content Sections (Gallery Layout) --- */
-
-.gallery {
-    max-width: 1200px; /* Increase max-width if needed to fit everything */
-    margin: 40px auto; 
-    
-    /* CRITICAL: Use Flexbox to put items on one line */
+/* --- 6. Services Card Layout --- */
+.service-cards {
     display: flex;
-    
-    /* IMPORTANT: Keeps items side-by-side, preventing wrapping */
-    flex-wrap: nowrap; 
-    
-    /* Distribute space between items and the edges */
-    justify-content: space-around; 
-    
-    /* Space between the items */
-    gap: 20px; 
-    
-    /* If the screen is too small, allow horizontal scrolling to see all items */
+    justify-content: space-around;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+}
+
+.card {
+    flex: 1;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-icon {
+    font-size: 3em;
+    color: var(--color-gold-text);
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+    color: var(--color-dark-green);
+    margin-bottom: 10px;
+}
+
+/* --- 7. Gallery Layout --- */
+.gallery {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 30px;
     overflow-x: auto; 
-    padding: 0 10px; 
+    padding: 0 10px;
 }
 
 .gallery-item {
-    /* Set a fixed size so three items fit side-by-side */
-    flex: 0 0 350px; /* Do not grow (0), Do not shrink (0), Base width 350px */
+    flex: 0 0 300px; 
     text-align: center;
 }
 
 .gallery-item img {
     width: 100%;
-    height: auto;
-    /* ... other styles (border-radius, box-shadow) ... */
+    height: 350px; 
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.3s;
 }
-/* --- 6. Footer (Contact Bar) Styling --- */
 
+.gallery-item img:hover {
+    transform: scale(1.02);
+}
+
+.gallery-item p {
+    font-family: var(--font-serif);
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+/* --- 8. Process Flow (Trust Section) --- */
+.process-flow {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    color: white;
+    gap: 20px;
+}
+
+.process-step {
+    flex: 1;
+    padding: 0 15px;
+    text-align: center;
+}
+
+.process-step h4 {
+    font-family: var(--font-serif);
+    font-size: 1.4em;
+    margin: 10px 0;
+}
+
+.process-icon {
+    font-size: 2.5em;
+    border: 3px solid var(--color-gold-button);
+    border-radius: 50%;
+    padding: 15px;
+    background-color: var(--color-dark-green);
+}
+
+/* --- 9. Guides & Tips Section --- */
+.guide-content {
+    max-width: 650px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.guide-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.guide-list li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: white; 
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.gold-icon {
+    color: var(--color-gold-button);
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+
+/* --- 10. Footer (Contact Bar) Styling - Includes Gold Icons Fix --- */
 .contact-bar {
-    background-color: var(--color-dark-green); /* ముదురు ఆకుపచ్చ */
-    color: #e8c062; /* లైట్ గోల్డ్ టెక్స్ట్ */
+    background-color: var(--color-dark-green);
+    color: white; 
     padding: 40px 20px;
     text-align: center;
 }
 
-.contact-content h3 {
-    color: white; /* హెడ్డింగ్ వైట్ లో ఉంటే హైలైట్ అవుతుంది */
-    margin-bottom: 25px;
-    font-family: var(--font-serif);
-    font-size: 1.5em;
+.contact-section {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.contact-content p {
+.contact-bar p {
     margin: 10px 0;
     font-size: 1.1em;
+    color: var(--color-gold-button); /* Phone/Email text color */
 }
 
-.footer-icon {
-    color: var(--color-gold-button); /* ఐకాన్స్ గోల్డ్ లో */
-    margin-right: 10px;
+.contact-bar p a {
+    color: inherit; 
 }
 
-/* సోషల్ మీడియా ఐకాన్స్ స్టైలింగ్ */
 .social-links {
-    margin-top: 25px;
-    margin-bottom: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .social-links a {
-    color: var(--color-gold-button);
+    /* KEY FIX: Social media icons are set to Gold */
+    color: var(--color-gold-text); 
     margin: 0 15px;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #ffffff; /* హోవర్ చేసినప్పుడు వైట్ లోకి మారుతుంది */
+    color: #ffffff; /* Icons turn white on hover */
 }
 
 .copyright {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 0.9em;
     color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- 11. Media Queries (Responsiveness) --- */
+@media (max-width: 900px) {
+    .hero-text h1 {
+        font-size: 3.5em;
+    }
+    .hero-text p {
+        font-size: 1.1em;
+    }
+    .service-cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .process-flow {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .process-step {
+        padding: 0;
+    }
+    .gallery {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-overlay {
+        justify-content: center;
+        padding: 0;
+    }
+    .hero-text {
+        text-align: center;
+        max-width: 90%;
+    }
+    .top-nav-hero {
+        position: static;
+        padding-top: 20px;
+    }
+    .top-nav-hero ul {
+        justify-content: center;
+        gap: 15px;
+        padding: 0;
+    }
+    .section-title {
+        font-size: 2em;
+    }
 }
