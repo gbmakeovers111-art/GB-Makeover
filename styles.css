@@ -1,0 +1,308 @@
+/* --- 1. Variables & Global Reset --- */
+:root {
+    --color-dark-green: #1a431c; /* Main Header/Footer/Background Color */
+    --color-light-bg: #f5f4e8; /* Creamy/Off-White Background */
+    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color */
+    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background */
+    --color-text-dark: #333;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Roboto', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: #e6e6e6; /* Monitor background color */
+}
+
+/* --- 2. Header and Navigation --- */
+.top-header {
+    background-color: var(--color-dark-green);
+    color: white;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--color-gold-text);
+}
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Placeholder styling for the GB Logo */
+/* Remove the old logo-placeholder styling (if still present) */
+/* .logo-placeholder { ... } */
+
+/* NEW CSS for the image logo in the header */
+
+.header-image-logo {
+    height: 40px; /* Adjust this value to control the size of the logo */
+    width: auto;
+    /* If your logo is dark and header is dark, you might need a filter: */
+    /* filter: brightness(200%); */
+}
+
+/* Ensure the link doesn't add extra space */
+.header-logo-link {
+    display: flex; /* Makes the link wrap neatly around the image */
+    align-items: center;
+}
+
+/* --- Ensure other header styles are as desired --- */
+.top-header {
+    background-color: var(--color-dark-green);
+    color: white;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--color-gold-text);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Aligns logo to the left */
+    align-items: center;
+    padding: 0 20px;
+}
+/* Remove or comment out old .top-nav rules if they were specific to header */
+/* .top-nav ul { ... } */
+/* .top-nav li { ... } */
+/* .top-nav a { ... } */
+/* .top-nav a:hover { ... } */
+
+/* NEW CSS for the navigation over the hero background */
+.top-nav-hero {
+    position: absolute; /* Position relative to .hero-overlay */
+    top: 20px;          /* Distance from the top */
+    right: 5%;          /* Distance from the right edge */
+    z-index: 10;        /* Ensure it's above other elements if necessary */
+}
+
+.top-nav-hero ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Space between menu items */
+}
+
+.top-nav-hero li {
+    margin: 0; /* Remove old margins */
+}
+
+.top-nav-hero a {
+    text-decoration: none;
+    color: white; /* Make text white to stand out on dark background */
+    font-weight: 400;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+.top-nav-hero a:hover {
+    color: var(--color-gold-button); /* Hover effect */
+}
+
+/* Adjust .hero-overlay and .hero-text if needed to account for the nav */
+.hero-overlay {
+    display: flex; /* Keep flex to position hero-text */
+    justify-content: flex-end; /* Still pushes hero-text to the right */
+    align-items: center; 
+    padding-right: 5%; 
+    padding-top: 60px; /* Adjust padding-top to ensure nav isn't covered by hero-text vertical centering */
+}
+/* --- 3. Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 90vh; /* Use 90vh to match common hero size */
+    
+    /* CRITICAL CHANGE: Use the correct image path for the dark green background */
+    background-image: url('placeholder-hero.jpg'); 
+    
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    
+    /* Remove text-align: center from here */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Background must be transparent to show the image */
+    background-color: transparent; 
+
+    /* NEW FLEXBOX RULES TO PUSH CONTENT TO THE RIGHT */
+    display: flex;
+    justify-content: flex-end; /* Pushes content to the right edge */
+    align-items: center;      /* Centers content vertically */
+    padding-right: 5%;        /* Adds spacing from the right edge */
+}
+
+.hero-text {
+    color: white;
+    max-width: 450px; /* Gives the text block a defined size */
+    text-align: left; /* Aligns the content within the hero-text div to the left */
+}
+
+/* Ensure these are present for styling the content */
+.hero-text h1 {
+    font-family: var(--font-serif);
+    font-size: 4em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-gold-button);
+    color: var(--color-dark-green);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: 1px solid transparent;
+}
+
+.cta-button:hover {
+    background-color: var(--color-gold-text);
+    color: white;
+}
+
+/* --- 4. Content Sections (Remains the same as your code) --- */
+.content-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+/* Guide Content ను సెంటర్‌లో ఉంచడానికి */
+.guide-content {
+    max-width: 600px; /* కంటెంట్‌కు గరిష్ట వెడల్పును సెట్ చేయండి */
+    margin: 20px auto; /* సెంటరింగ్ కోసం */
+    text-align: center; /* బటన్ సెంటర్‌లో రావడానికి */
+}
+
+.guide-list {
+    list-style: none; 
+    padding: 0;
+    text-align: left; /* లిస్ట్ ఐటమ్స్ ఒకే లైన్‌లో ఉండేలా */
+    margin-bottom: 30px;
+}
+
+.guide-list li {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #e0e0e0; /* డార్క్ బ్యాక్‌గ్రౌండ్‌కు వైట్ టెక్స్ట్ */
+}
+
+/* గోల్డ్ ఐకాన్ స్టైలింగ్ */
+.gold-icon {
+    color: var(--color-gold-button); /* మీ గోల్డ్ కలర్ */
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* బటన్ స్టైలింగ్ */
+.gold-cta {
+    /* ...ఇంతకు ముందు ఇచ్చిన గోల్డ్ బటన్ స్టైలింగ్ ఇక్కడ ఉంటుంది... */
+}
+.light-bg {
+    background-color: var(--color-light-bg);
+}
+/* ... rest of content sections code ... */
+
+/* Remaining CSS below (omitted for brevity, keep the rest of your original CSS) *//* --- 4. Content Sections (Gallery Layout) --- */
+
+.gallery {
+    max-width: 1200px; /* Increase max-width if needed to fit everything */
+    margin: 40px auto; 
+    
+    /* CRITICAL: Use Flexbox to put items on one line */
+    display: flex;
+    
+    /* IMPORTANT: Keeps items side-by-side, preventing wrapping */
+    flex-wrap: nowrap; 
+    
+    /* Distribute space between items and the edges */
+    justify-content: space-around; 
+    
+    /* Space between the items */
+    gap: 20px; 
+    
+    /* If the screen is too small, allow horizontal scrolling to see all items */
+    overflow-x: auto; 
+    padding: 0 10px; 
+}
+
+.gallery-item {
+    /* Set a fixed size so three items fit side-by-side */
+    flex: 0 0 350px; /* Do not grow (0), Do not shrink (0), Base width 350px */
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    /* ... other styles (border-radius, box-shadow) ... */
+}
+/* --- 6. Footer (Contact Bar) Styling --- */
+
+.contact-bar {
+    background-color: var(--color-dark-green); /* ముదురు ఆకుపచ్చ */
+    color: #e8c062; /* లైట్ గోల్డ్ టెక్స్ట్ */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-content h3 {
+    color: white; /* హెడ్డింగ్ వైట్ లో ఉంటే హైలైట్ అవుతుంది */
+    margin-bottom: 25px;
+    font-family: var(--font-serif);
+    font-size: 1.5em;
+}
+
+.contact-content p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.footer-icon {
+    color: var(--color-gold-button); /* ఐకాన్స్ గోల్డ్ లో */
+    margin-right: 10px;
+}
+
+/* సోషల్ మీడియా ఐకాన్స్ స్టైలింగ్ */
+.social-links {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: var(--color-gold-button);
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff; /* హోవర్ చేసినప్పుడు వైట్ లోకి మారుతుంది */
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
+}
