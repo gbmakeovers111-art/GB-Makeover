@@ -1,10 +1,13 @@
 /* --- 1. Variables & Global Reset --- */
 :root {
-    --color-dark-green: #1a431c; 
-    --color-light-bg: #f5f4e8; 
-    --color-gold-text: #b8860b; 
-    --color-gold-button: #e8c062; 
+    /* Color Palette */
+    --color-dark-green: #1a431c; /* Main Header/Footer/Background Color */
+    --color-light-bg: #f5f4e8; /* Creamy/Off-White Background */
+    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color - Used for icons/CTA hover */
+    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background/Contact text */
     --color-text-dark: #333;
+
+    /* Fonts */
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Roboto', sans-serif;
 }
@@ -15,6 +18,11 @@
     box-sizing: border-box;
 }
 
+/* New: Enable smooth scrolling for all anchor links */
+html {
+    scroll-behavior: smooth; 
+}
+
 body {
     font-family: var(--font-sans);
     color: var(--color-text-dark);
@@ -22,7 +30,7 @@ body {
     background-color: #ffffff; 
 }
 
-/* --- 2. Typography & Section Titles (No changes) --- */
+/* --- 2. Typography & Section Titles --- */
 .content-section {
     padding: 80px 20px;
     text-align: center;
@@ -52,7 +60,14 @@ body {
     color: white !important;
 }
 
-/* --- 3. Navigation (No changes) --- */
+/* Gold/Accent Icons for Trust Section and Guides */
+.gold-icon {
+    color: var(--color-gold-button);
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+
+/* --- 3. Navigation --- */
 .top-nav-hero {
     position: absolute;
     top: 20px;
@@ -80,10 +95,11 @@ body {
     color: var(--color-gold-button);
 }
 
-/* --- 4. Hero Section & Logo Styling (MODIFIED to push text down) --- */
+/* --- 4. Hero Section & Logo Styling (LEFT/RIGHT LAYOUT) --- */
 .hero-section {
     position: relative;
     height: 90vh;
+    /* CHANGE THIS TO YOUR ACTUAL HERO IMAGE */
     background-image: url('placeholder-hero.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -104,6 +120,7 @@ body {
     padding: 0 5%;
 }
 
+/* Logo Container (LEFT SIDE) */
 .logo-container {
     flex: 1; 
     height: 100%;
@@ -112,31 +129,35 @@ body {
     justify-content: center;
     align-items: center; 
     
+    /* CHANGE THIS TO YOUR ACTUAL LOGO IMAGE */
     background-image: url('gb_logo.png'); 
     background-repeat: no-repeat;
-    background-position: center 20%; 
-    background-size: 70%; 
+    background-position: center 30%; 
+    background-size: 90%; 
 }
 
+/* Logo text (Below Logo, on the LEFT SIDE) */
 .gb-meaning-text {
     color: var(--color-gold-button); 
     font-family: var(--font-serif); 
     font-weight: 700;
-    font-size: 2.8em; 
+    font-size: 2.2em; 
     
-    /* MAIN CHANGE: Pushed the text further down from the logo image */
-    margin-top: 60%; 
+    margin-top: 50%; 
     
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     padding: 10px 0;
     text-align: center;
     line-height: 1.1;
+    width: 100%;
+    max-width: 400px;
 }
 
+/* Hero Text (RIGHT SIDE) */
 .hero-text {
     color: white;
     max-width: 500px;
-    text-align: left;
+    text-align: left; 
     flex: 1; 
     padding-left: 5%; 
 }
@@ -154,7 +175,14 @@ body {
     margin-bottom: 40px;
 }
 
-/* --- 5. CTA Button Styling (No changes) --- */
+.hero-cta-group {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start; 
+}
+
+
+/* --- 5. CTA Button Styling --- */
 .cta-button {
     display: inline-block;
     background-color: var(--color-gold-button);
@@ -187,22 +215,36 @@ body {
     border-color: white;
 }
 
-/* --- 6. Services Card Layout (No changes) --- */
+.gold-cta-border {
+    background-color: transparent;
+    color: var(--color-gold-button);
+    border: 2px solid var(--color-gold-button);
+}
+
+.gold-cta-border:hover {
+    background-color: var(--color-gold-button);
+    color: var(--color-dark-green);
+    border-color: var(--color-gold-button);
+}
+
+/* --- 6. Services Card Layout --- */
 .service-cards {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap; 
+    justify-content: center; 
     gap: 30px;
-    max-width: 1000px;
+    max-width: 1200px; 
     margin: 0 auto 40px;
 }
 
 .card {
-    flex: 1;
-    padding: 30px;
+    flex: 0 0 calc(25% - 22.5px); /* 4 cards in a row with spacing */
+    padding: 30px 15px;
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s;
+    min-width: 200px; 
 }
 
 .card:hover {
@@ -223,21 +265,98 @@ body {
     margin-bottom: 10px;
 }
 
-/* --- 7. Gallery Layout (No changes) --- */
+/* --- 7. Why Choose Us? (Value Proposition) --- */
+.value-propositions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+    max-width: 1200px; 
+    margin: 40px auto 0;
+}
+
+.value-item {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.value-item h3 {
+    font-family: var(--font-serif);
+    margin: 15px 0 10px;
+    font-size: 1.5em;
+}
+
+.value-item p {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* --- 8. GALLERY FILTERING STYLES --- */
+.filter-buttons {
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: white;
+    color: var(--color-dark-green);
+    border: 2px solid var(--color-gold-button);
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    background-color: var(--color-light-bg);
+}
+
+.filter-btn.active {
+    background-color: var(--color-gold-text);
+    color: white;
+    border-color: var(--color-gold-text);
+}
+
+/* --- 9. Gallery Layout (COMBINED) --- */
 .gallery {
     max-width: 1200px;
     margin: 40px auto;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 30px;
-    overflow-x: auto; 
     padding: 0 10px;
 }
 
 .gallery-item {
-    flex: 0 0 300px; 
+    flex: 0 0 calc(33.333% - 20px); 
+    max-width: 350px;
     text-align: center;
+    position: relative; 
+    overflow: hidden;
+    cursor: pointer; 
+    /* Transition added to hide/show during filtering */
+    transition: opacity 0.5s, transform 0.5s, max-height 0.5s, margin 0.5s; 
+    max-height: 450px; /* Base height for transition */
+}
+
+.gallery-item.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    max-height: 0; /* Animate height to 0 */
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    display: none; /* Finally hide completely */
+}
+
+.gallery-item a {
+    text-decoration: none; 
+    color: inherit;
+    display: block;
 }
 
 .gallery-item img {
@@ -250,7 +369,7 @@ body {
     transition: transform 0.3s;
 }
 
-.gallery-item img:hover {
+.gallery-item:hover img {
     transform: scale(1.02);
 }
 
@@ -261,7 +380,7 @@ body {
     color: var(--color-text-dark);
 }
 
-/* --- 8. Process Flow (Trust Section) (No changes) --- */
+/* --- 10. Process Flow (Trust Section) --- */
 .process-flow {
     display: flex;
     justify-content: space-between;
@@ -291,7 +410,47 @@ body {
     background-color: var(--color-dark-green);
 }
 
-/* --- 9. Guides & Tips Section (No changes) --- */
+/* --- 11. STRATEGIC CTA BANNER STYLES --- */
+.cta-banner-section {
+    background-color: var(--color-gold-text);
+    padding: 60px 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.cta-banner-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.cta-banner-title {
+    font-family: var(--font-serif);
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.cta-banner-subtitle {
+    font-size: 1.2em;
+    color: #fff8e1; 
+    margin-bottom: 30px;
+}
+
+/* Override CTA button style for better contrast on gold banner */
+.cta-banner-section .cta-button {
+    background-color: var(--color-dark-green);
+    color: white;
+    border-color: var(--color-dark-green);
+}
+
+.cta-banner-section .cta-button:hover {
+    background-color: black;
+    color: var(--color-gold-button);
+    border-color: black;
+}
+
+
+/* --- 12. Guides & Tips Section --- */
 .guide-content {
     max-width: 650px;
     margin: 20px auto;
@@ -313,13 +472,45 @@ body {
     padding-bottom: 10px;
 }
 
-.gold-icon {
-    color: var(--color-gold-button);
-    margin-right: 15px;
-    font-size: 1.3em;
+
+/* --- 13. Testimonials --- */
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 40px auto;
 }
 
-/* --- 10. Footer (Contact Bar) Styling (FIXED color issues) --- */
+.testimonial-card {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border-top: 5px solid var(--color-gold-button); 
+}
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--color-text-dark);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.client-name {
+    font-weight: 700;
+    color: var(--color-dark-green);
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* --- 14. Footer (Contact Bar) Styling --- */
 .contact-bar {
     background-color: var(--color-dark-green);
     color: white; 
@@ -339,7 +530,7 @@ body {
 }
 
 .contact-bar p a {
-    color: inherit !important; /* Fixes blue/purple link color */
+    color: inherit !important; 
     text-decoration: none;
 }
 
@@ -354,7 +545,7 @@ body {
 }
 
 .social-links a {
-    color: var(--color-gold-text) !important; /* Fixes blue social icons */
+    color: var(--color-gold-text) !important; 
     margin: 0 15px;
     transition: color 0.3s;
 }
@@ -369,60 +560,262 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* --- 11. Media Queries (Responsiveness) (Modified to reflect main changes) --- */
-@media (max-width: 900px) {
-    .hero-overlay {
-        flex-direction: column;
-        justify-content: center;
-        padding-top: 60px;
-    }
+/* --- 15. MODAL/LIGHTBOX STYLES --- */
 
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.9); 
+}
+
+.modal-content-container {
+    position: relative;
+    margin: auto;
+    width: 70%; 
+    max-width: 700px; 
+    height: 80vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 101;
+    cursor: pointer;
+}
+
+.prev-btn, .next-btn {
+    cursor: pointer;
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 100; 
+    opacity: 0.8; 
+}
+
+.prev-btn {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.next-btn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 50px; 
+    font-size: 1.2em;
+}
+
+
+/* --- 16. FLOATING WHATSAPP BUTTON STYLES --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; 
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 50; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* --- 17. Media Queries (Responsiveness) --- */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 1200px) {
+    .service-cards {
+        gap: 20px;
+    }
+    .card {
+        flex: 0 0 calc(50% - 15px); /* 2 cards per row */
+    }
+    .value-propositions {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for trust section */
+        max-width: 800px;
+    }
+    .gallery-item {
+        flex: 0 0 calc(50% - 15px); /* 2 images per row */
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 100vh;
+    }
+    .hero-overlay {
+        flex-direction: column; /* Stack logo and text vertically */
+        justify-content: flex-start;
+        padding-top: 100px;
+    }
+    
+    .top-nav-hero {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .top-nav-hero ul {
+        justify-content: center;
+        gap: 15px;
+    }
+    
     .logo-container {
-        height: 280px; /* Increased height for text movement */
-        background-position: center 10%; /* Move logo up for better text spacing */
-        background-size: 55%;
+        height: 150px; /* Reduced logo space */
+        background-position: center 0%;
+        background-size: 100px auto; 
     }
     
     .gb-meaning-text {
-        /* Adjusted for mobile view, pushing text down */
-        margin-top: 180px; 
-        font-size: 1.8em; 
+        margin-top: 100px; 
+        font-size: 1.5em;
     }
-    
+
     .hero-text {
         text-align: center;
         padding-left: 0;
         max-width: 90%;
     }
     .hero-text h1 {
-        font-size: 3em; 
+        font-size: 2.5em;
+        margin-top: 20px;
     }
     .hero-text p {
-        font-size: 1.1em;
+        font-size: 1em;
+        margin-bottom: 25px;
     }
-    .service-cards {
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 80%; /* Full width buttons */
+    }
+    
+    .service-cards, .testimonials-container, .process-flow, .value-propositions {
         flex-direction: column;
         gap: 20px;
     }
+
+    .card, .value-item, .gallery-item {
+        flex: 0 0 100%; /* 1 card/item per row */
+        max-width: 90%; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
     .process-flow {
-        flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
-    .gallery {
-        justify-content: flex-start;
+
+    .process-step {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 20px;
     }
-}
-@media (max-width: 600px) {
-    .top-nav-hero {
-        position: static;
-        padding-top: 20px;
+    .process-step:last-child {
+        border-bottom: none;
     }
-    .top-nav-hero ul {
+    
+    .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
-        padding: 0;
     }
-    .section-title {
-        font-size: 2em;
+    .filter-btn {
+        margin: 5px;
+    }
+    
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+    
+    .modal-content-container {
+        width: 95%; 
+        height: 90vh;
+    }
+    
+    .close-btn {
+        right: 15px;
+        top: 0;
+    }
+    
+    .prev-btn, .next-btn {
+        font-size: 20px;
+    }
+    
+    .contact-bar p {
+        font-size: 1em;
     }
 }
