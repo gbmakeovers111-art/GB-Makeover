@@ -1,10 +1,10 @@
 /* --- 1. Variables & Global Reset --- */
 :root {
     /* Color Palette */
-    --color-dark-green: #1a431c; /* Main Header/Footer/Background Color */
-    --color-light-bg: #f5f4e8; /* Creamy/Off-White Background */
-    --color-gold-text: #b8860b; /* Gold/Bronze Accent Color - Used for icons/CTA hover */
-    --color-gold-button: #e8c062; /* Lighter Gold for CTA Background/Contact text */
+    --color-dark-green: #1a431c; 
+    --color-light-bg: #f5f4e8; 
+    --color-gold-text: #b8860b; 
+    --color-gold-button: #e8c062; 
     --color-text-dark: #333;
 
     /* Fonts */
@@ -18,7 +18,6 @@
     box-sizing: border-box;
 }
 
-/* New: Enable smooth scrolling for all anchor links */
 html {
     scroll-behavior: smooth; 
 }
@@ -60,7 +59,6 @@ body {
     color: white !important;
 }
 
-/* Gold/Accent Icons for Trust Section and Guides */
 .gold-icon {
     color: var(--color-gold-button);
     margin-right: 15px;
@@ -95,11 +93,10 @@ body {
     color: var(--color-gold-button);
 }
 
-/* --- 4. Hero Section & Logo Styling (LEFT/RIGHT LAYOUT) --- */
+/* --- 4. Hero Section --- */
 .hero-section {
     position: relative;
     height: 90vh;
-    /* CHANGE THIS TO YOUR ACTUAL HERO IMAGE */
     background-image: url('placeholder-hero.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -113,14 +110,12 @@ body {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.3); 
-    
     display: flex;
     justify-content: space-around; 
     align-items: center;
     padding: 0 5%;
 }
 
-/* Logo Container (LEFT SIDE) */
 .logo-container {
     flex: 1; 
     height: 100%;
@@ -128,23 +123,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    
-    /* CHANGE THIS TO YOUR ACTUAL LOGO IMAGE */
     background-image: url('gb_logo.png'); 
     background-repeat: no-repeat;
     background-position: center 30%; 
     background-size: 90%; 
 }
 
-/* Logo text (Below Logo, on the LEFT SIDE) */
 .gb-meaning-text {
     color: var(--color-gold-button); 
     font-family: var(--font-serif); 
     font-weight: 700;
     font-size: 2.2em; 
-    
     margin-top: 50%; 
-    
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     padding: 10px 0;
     text-align: center;
@@ -153,7 +143,6 @@ body {
     max-width: 400px;
 }
 
-/* Hero Text (RIGHT SIDE) */
 .hero-text {
     color: white;
     max-width: 500px;
@@ -227,7 +216,40 @@ body {
     border-color: var(--color-gold-button);
 }
 
-/* --- 6. Services Card Layout --- */
+.gold-cta-border-dark {
+    background-color: transparent;
+    color: var(--color-gold-button);
+    border: 2px solid var(--color-gold-button);
+}
+
+.gold-cta-border-dark:hover {
+    background-color: var(--color-gold-button);
+    color: var(--color-dark-green);
+    border-color: var(--color-gold-button);
+}
+
+/* New Form CTA for Lead Magnet */
+.cta-button-form {
+    display: block;
+    width: 100%;
+    background-color: var(--color-gold-text);
+    color: white;
+    font-weight: 700;
+    padding: 15px 35px;
+    border-radius: 5px; 
+    border: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    font-family: var(--font-sans); 
+    font-size: 1.1em;
+}
+.cta-button-form:hover {
+    background-color: var(--color-dark-green);
+    color: white;
+}
+
+
+/* --- 6. Services Card Layout & Maintenance Cards --- */
 .service-cards {
     display: flex;
     flex-wrap: wrap; 
@@ -238,7 +260,7 @@ body {
 }
 
 .card {
-    flex: 0 0 calc(25% - 22.5px); /* 4 cards in a row with spacing */
+    flex: 0 0 calc(25% - 22.5px); 
     padding: 30px 15px;
     border-radius: 10px;
     background-color: white;
@@ -264,6 +286,28 @@ body {
     color: var(--color-dark-green);
     margin-bottom: 10px;
 }
+
+.maintenance-cards .card {
+    background-color: #2e5c32; 
+    color: white;
+    border: none;
+}
+
+.maintenance-cards .card h3 {
+    color: var(--color-gold-button);
+}
+
+.maintenance-cards .card p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.premium-card {
+    background-color: var(--color-dark-green); 
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
 
 /* --- 7. Why Choose Us? (Value Proposition) --- */
 .value-propositions {
@@ -291,9 +335,11 @@ body {
 }
 
 
-/* --- 8. GALLERY FILTERING STYLES --- */
+/* --- 8. Gallery & Filter STYLES --- */
 .filter-buttons {
     margin-bottom: 40px;
+    /* Allow buttons to wrap on smaller screens */
+    white-space: normal; 
 }
 
 .filter-btn {
@@ -301,17 +347,14 @@ body {
     color: var(--color-dark-green);
     border: 2px solid var(--color-gold-button);
     padding: 10px 20px;
-    margin: 0 5px;
+    margin: 5px; /* Increased margin for touch targets */
     cursor: pointer;
     font-size: 1em;
     font-weight: 700;
     border-radius: 30px;
     transition: background-color 0.3s, color 0.3s;
     text-transform: uppercase;
-}
-
-.filter-btn:hover {
-    background-color: var(--color-light-bg);
+    display: inline-block; /* Ensure they wrap properly */
 }
 
 .filter-btn.active {
@@ -320,7 +363,6 @@ body {
     border-color: var(--color-gold-text);
 }
 
-/* --- 9. Gallery Layout (COMBINED) --- */
 .gallery {
     max-width: 1200px;
     margin: 40px auto;
@@ -338,25 +380,19 @@ body {
     position: relative; 
     overflow: hidden;
     cursor: pointer; 
-    /* Transition added to hide/show during filtering */
-    transition: opacity 0.5s, transform 0.5s, max-height 0.5s, margin 0.5s; 
-    max-height: 450px; /* Base height for transition */
+    /* Improved transition for filtering */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, height 0.4s ease-in-out, margin 0.4s ease-in-out, flex 0.4s ease-in-out; 
+    max-height: 450px; 
 }
 
 .gallery-item.hidden {
     opacity: 0;
-    transform: scale(0.8);
-    max-height: 0; /* Animate height to 0 */
+    transform: scale(0.9);
+    height: 0; /* Collapse element height */
     margin: 0;
     padding: 0;
     pointer-events: none;
-    display: none; /* Finally hide completely */
-}
-
-.gallery-item a {
-    text-decoration: none; 
-    color: inherit;
-    display: block;
+    display: none; /* Crucial for flow control after transition */
 }
 
 .gallery-item img {
@@ -373,54 +409,221 @@ body {
     transform: scale(1.02);
 }
 
-.gallery-item p {
-    font-family: var(--font-serif);
-    font-size: 1.1em;
-    font-weight: 700;
-    color: var(--color-text-dark);
+
+/* --- 9. Interactive Before & After Showcase (RE-ADDED & FIXED) --- */
+.before-after-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-light-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
 }
 
-/* --- 10. Process Flow (Trust Section) --- */
+.image-comparison-widget {
+    position: relative;
+    width: 100%;
+    padding-top: 60%; /* Aspect ratio (e.g., 800px wide / 480px high = 60%) */
+    cursor: col-resize;
+}
+
+.comparison-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-overlay .comparison-image {
+    width: auto;
+    min-width: 100%; /* Ensures the image within the overlay covers the full width if needed */
+}
+
+.slider-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-dark-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--color-gold-button);
+}
+
+.label {
+    position: absolute;
+    top: 15px;
+    padding: 5px 10px;
+    color: white;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+.label.before {
+    left: 15px;
+    background-color: var(--color-dark-green);
+}
+.label.after {
+    right: 15px;
+    background-color: var(--color-dark-green);
+}
+
+
+/* --- 10. Process Flow (FIXED) --- */
 .process-flow {
     display: flex;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: 40px auto 0;
-    color: white;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 40px auto;
     gap: 20px;
 }
 
 .process-step {
     flex: 1;
-    padding: 0 15px;
+    max-width: 250px;
+    padding: 20px;
     text-align: center;
+    position: relative;
 }
 
 .process-step h4 {
     font-family: var(--font-serif);
-    font-size: 1.4em;
+    font-size: 1.6em;
     margin: 10px 0;
+    color: white;
+}
+
+.process-step p {
+    color: rgba(255, 255, 255, 0.8); /* Fixed color visibility for text */
+    font-size: 1em;
+    line-height: 1.4;
+    opacity: 1; 
 }
 
 .process-icon {
-    font-size: 2.5em;
-    border: 3px solid var(--color-gold-button);
-    border-radius: 50%;
+    font-size: 3em;
     padding: 15px;
-    background-color: var(--color-dark-green);
+    background: #2e5c32;
+    border-radius: 50%;
+    border: 3px solid var(--color-gold-button);
+    color: var(--color-gold-button); /* Ensure icon color is gold */
 }
 
-/* --- 11. STRATEGIC CTA BANNER STYLES --- */
+.process-flow .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 40px; 
+    right: -20px; 
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-gold-button);
+}
+
+
+/* --- 11. Testimonials --- */
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px; 
+    margin: 40px auto;
+    flex-wrap: wrap; 
+}
+
+.testimonial-card {
+    flex: 1 1 300px; 
+    max-width: 350px;
+    padding: 30px;
+    background-color: white;
+    border-left: 5px solid var(--color-gold-text);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.quote {
+    font-style: italic;
+    color: var(--color-text-dark);
+    margin-bottom: 15px;
+}
+
+.client-name {
+    font-weight: 700;
+    color: var(--color-dark-green);
+}
+
+/* --- 11B. Lead Form Styles (NEW) --- */
+.lead-form-container {
+    max-width: 600px;
+    margin: 40px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: #2e5c32;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.pdf-icon-area {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.lead-form {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.lead-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: var(--font-sans);
+}
+
+.privacy-text {
+    font-size: 0.85em;
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* --- 12. Call to Action Banner --- */
 .cta-banner-section {
     background-color: var(--color-gold-text);
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
-    margin: 0;
-}
-
-.cta-banner-content {
-    max-width: 800px;
-    margin: auto;
 }
 
 .cta-banner-title {
@@ -432,90 +635,29 @@ body {
 
 .cta-banner-subtitle {
     font-size: 1.2em;
-    color: #fff8e1; 
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 30px;
 }
 
-/* Override CTA button style for better contrast on gold banner */
-.cta-banner-section .cta-button {
+.cta-banner-section .gold-cta {
+    background-color: white;
+    color: var(--color-dark-green);
+    border-color: white;
+}
+.cta-banner-section .gold-cta:hover {
     background-color: var(--color-dark-green);
     color: white;
     border-color: var(--color-dark-green);
 }
 
-.cta-banner-section .cta-button:hover {
-    background-color: black;
-    color: var(--color-gold-button);
-    border-color: black;
-}
 
-
-/* --- 12. Guides & Tips Section --- */
-.guide-content {
-    max-width: 650px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.guide-list {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    margin-bottom: 40px;
-}
-
-.guide-list li {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    color: white; 
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-    padding-bottom: 10px;
-}
-
-
-/* --- 13. Testimonials --- */
-.testimonials-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    max-width: 1000px;
-    margin: 40px auto;
-}
-
-.testimonial-card {
-    flex: 1;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    border-top: 5px solid var(--color-gold-button); 
-}
-
-.quote {
-    font-family: var(--font-serif);
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    color: var(--color-text-dark);
-    font-style: italic;
-    line-height: 1.4;
-}
-
-.client-name {
-    font-weight: 700;
-    color: var(--color-dark-green);
-    font-size: 1em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-
-/* --- 14. Footer (Contact Bar) Styling --- */
+/* --- 13. Footer --- */
 .contact-bar {
     background-color: var(--color-dark-green);
-    color: white; 
+    color: white;
     padding: 40px 20px;
     text-align: center;
+    border-top: 5px solid var(--color-gold-text);
 }
 
 .contact-section {
@@ -523,83 +665,71 @@ body {
     margin: 0 auto;
 }
 
-.contact-bar p {
-    margin: 10px 0;
+.contact-section p {
+    margin-bottom: 15px;
     font-size: 1.1em;
-    color: var(--color-gold-button); 
-}
-
-.contact-bar p a {
-    color: inherit !important; 
-    text-decoration: none;
-}
-
-.contact-bar i {
-    color: var(--color-gold-button); 
-    margin-right: 8px;
 }
 
 .social-links {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .social-links a {
-    color: var(--color-gold-text) !important; 
+    color: white;
     margin: 0 15px;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #ffffff !important; 
+    color: var(--color-gold-button);
 }
 
 .copyright {
-    margin-top: 25px;
     font-size: 0.9em;
+    margin-top: 20px;
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* --- 15. MODAL/LIGHTBOX STYLES --- */
-
+/* --- 14. Lightbox Modal --- */
 .modal {
-    display: none; 
-    position: fixed; 
+    display: none;
+    position: fixed;
     z-index: 100; 
-    padding-top: 50px; 
+    padding-top: 50px;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: hidden; 
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.9); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content-container {
-    position: relative;
     margin: auto;
-    width: 70%; 
-    max-width: 700px; 
-    height: 80vh; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    position: relative;
+    padding: 20px 0;
 }
 
 .modal-image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    max-height: 80vh;
     display: block;
-    object-fit: contain;
     margin: 0 auto;
-    animation-name: zoom;
-    animation-duration: 0.6s;
+    object-fit: contain;
 }
 
-@keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
+.caption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-family: var(--font-serif);
 }
 
 .close-btn {
@@ -610,30 +740,33 @@ body {
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
+    cursor: pointer;
     z-index: 101;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
     cursor: pointer;
 }
 
+/* Navigation buttons (Prev/Next) */
 .prev-btn, .next-btn {
     cursor: pointer;
-    position: absolute; 
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     width: auto;
     padding: 16px;
+    margin-top: -50px;
     color: white;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
     transition: 0.6s ease;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 100; 
-    opacity: 0.8; 
-}
-
-.prev-btn {
-    left: 0;
     border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 101;
 }
 
 .next-btn {
@@ -642,180 +775,256 @@ body {
 }
 
 .prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    opacity: 1;
-}
-
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 50px; 
-    font-size: 1.2em;
+    background-color: rgba(0,0,0,0.8);
 }
 
 
-/* --- 16. FLOATING WHATSAPP BUTTON STYLES --- */
+/* --- 15. Floating WhatsApp Button --- */
 .whatsapp-float {
     position: fixed;
     width: 60px;
     height: 60px;
     bottom: 40px;
     right: 40px;
-    background-color: #25d366; 
+    background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
     box-shadow: 2px 2px 3px #999;
-    z-index: 50; 
+    z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s;
+    transition: background-color 0.3s;
 }
 
 .whatsapp-float:hover {
-    transform: scale(1.1);
+    background-color: #128c7e;
 }
 
-/* --- 17. Media Queries (Responsiveness) --- */
 
-/* Tablet and Smaller Desktop */
-@media (max-width: 1200px) {
-    .service-cards {
-        gap: 20px;
-    }
-    .card {
-        flex: 0 0 calc(50% - 15px); /* 2 cards per row */
-    }
-    .value-propositions {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for trust section */
-        max-width: 800px;
-    }
-    .gallery-item {
-        flex: 0 0 calc(50% - 15px); /* 2 images per row */
-    }
-}
+/* --- 16. MOBILE RESPONSIVENESS (Media Queries) --- */
 
-/* Mobile Devices */
-@media (max-width: 768px) {
-    .hero-section {
-        height: 100vh;
-    }
+/* For tablets/smaller laptops (992px) */
+@media (max-width: 992px) {
     .hero-overlay {
-        flex-direction: column; /* Stack logo and text vertically */
+        flex-direction: column;
         justify-content: flex-start;
-        padding-top: 100px;
+        padding: 50px 5%;
     }
     
     .top-nav-hero {
         position: static;
+        margin-bottom: 20px;
+        order: -1; 
         width: 100%;
         text-align: center;
-        margin-bottom: 20px;
     }
+    
     .top-nav-hero ul {
         justify-content: center;
         gap: 15px;
     }
     
     .logo-container {
-        height: 150px; /* Reduced logo space */
-        background-position: center 0%;
-        background-size: 100px auto; 
+        height: 150px; 
+        background-position: center 50%;
+        background-size: 50%;
+        margin-bottom: 20px;
     }
     
     .gb-meaning-text {
-        margin-top: 100px; 
-        font-size: 1.5em;
+        font-size: 1.8em;
+        margin-top: 130px; 
     }
 
     .hero-text {
         text-align: center;
         padding-left: 0;
-        max-width: 90%;
+        max-width: 100%;
     }
+
     .hero-text h1 {
-        font-size: 2.5em;
-        margin-top: 20px;
+        font-size: 3em; 
     }
+
     .hero-text p {
-        font-size: 1em;
-        margin-bottom: 25px;
+        font-size: 1.3em;
     }
+
     .hero-cta-group {
-        flex-direction: column;
-        gap: 15px;
         justify-content: center;
-        align-items: center;
+        flex-wrap: wrap;
     }
     
-    .cta-button {
-        width: 80%; /* Full width buttons */
-    }
-    
-    .service-cards, .testimonials-container, .process-flow, .value-propositions {
-        flex-direction: column;
+    /* Services & Cards */
+    .service-cards {
         gap: 20px;
     }
-
-    .card, .value-item, .gallery-item {
-        flex: 0 0 100%; /* 1 card/item per row */
-        max-width: 90%; 
-        margin-left: auto;
-        margin-right: auto;
+    .card {
+        flex: 0 0 calc(50% - 10px); 
     }
     
+    /* Value Propositions */
+    .value-propositions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Process Flow */
     .process-flow {
-        gap: 40px;
+        flex-wrap: wrap;
+    }
+    .process-step {
+        flex: 0 0 calc(50% - 20px);
+        max-width: unset;
+        margin-bottom: 40px;
+    }
+    .process-flow .process-step:not(:last-child)::after {
+        display: none; 
+    }
+    .process-flow .process-step:nth-child(even)::after {
+        content: '';
+        position: absolute;
+        bottom: -20px; 
+        left: 50%; 
+        width: 2px;
+        height: 40px;
+        background-color: var(--color-gold-button);
+        transform: translateX(-50%);
     }
 
-    .process-step {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        padding-bottom: 20px;
+    /* Lead Form */
+    .lead-form-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
     }
-    .process-step:last-child {
-        border-bottom: none;
+    .pdf-icon-area {
+        margin-bottom: 10px;
+    }
+}
+
+/* For mobile phones (768px) */
+@media (max-width: 768px) {
+    
+    .section-title {
+        font-size: 2em;
     }
     
-    .filter-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    .content-section {
+        padding: 50px 15px;
     }
+    
+    /* Hero Section */
+    .hero-section {
+        height: 80vh; 
+    }
+    .top-nav-hero a {
+        font-size: 1em;
+    }
+    .hero-text h1 {
+        font-size: 2.8em;
+    }
+    .hero-text p {
+        font-size: 1.1em;
+    }
+    .hero-cta-group {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    .cta-button {
+        padding: 12px 25px;
+    }
+    
+    /* Services & Cards */
+    .card {
+        flex: 0 0 100%; 
+    }
+    .maintenance-cards .premium-card {
+        transform: scale(1); 
+    }
+    
+    /* Filter Buttons */
     .filter-btn {
-        margin: 5px;
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+
+    /* Gallery */
+    .gallery-item {
+        flex: 0 0 100%;
+        max-width: 90%; 
+    }
+    .gallery-item img {
+        height: 300px; 
     }
     
+    /* Value Propositions */
+    .value-propositions {
+        grid-template-columns: 1fr; 
+    }
+    
+    /* Process Flow */
+     .process-step {
+        flex: 0 0 100%;
+    }
+    .process-flow .process-step:nth-child(even)::after {
+        display: none; 
+    }
+    
+    /* Testimonials (For mobile, stack them vertically) */
+    .testimonials-container {
+        flex-direction: column; 
+        gap: 20px;
+    }
+    .testimonial-card {
+        max-width: 100%; 
+    }
+
+    /* Lead Form */
+    .lead-form-container {
+        padding: 20px 10px;
+    }
+    .pdf-icon-area {
+        margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .contact-bar {
+        padding: 30px 15px;
+    }
+    .contact-section p {
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+    .social-links a {
+        font-size: 1.5em;
+    }
+
+    /* Modal (Lightbox) */
+    .modal-content-container {
+        padding: 10px;
+        width: 95%;
+    }
+    .modal-image {
+        max-height: 70vh;
+    }
+    .prev-btn, .next-btn {
+        font-size: 20px;
+        padding: 8px;
+        margin-top: -30px;
+    }
+    .close-btn {
+        font-size: 30px;
+    }
+    
+    /* Floating WhatsApp Button */
     .whatsapp-float {
         width: 50px;
         height: 50px;
         bottom: 20px;
         right: 20px;
         font-size: 25px;
-    }
-    
-    .modal-content-container {
-        width: 95%; 
-        height: 90vh;
-    }
-    
-    .close-btn {
-        right: 15px;
-        top: 0;
-    }
-    
-    .prev-btn, .next-btn {
-        font-size: 20px;
-    }
-    
-    .contact-bar p {
-        font-size: 1em;
     }
 }

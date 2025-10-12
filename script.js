@@ -1,119 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Gallery Filtering Logic ---
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const filterValue = e.target.getAttribute('data-filter');
-
-            // Remove 'active' class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add 'active' class to the clicked button
-            e.target.classList.add('active');
-
-            // Show/Hide gallery items based on filterValue
-            galleryItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                
-                // Use a short delay before displaying items for a smoother transition effect
-                setTimeout(() => {
-                    if (filterValue === 'all' || category.includes(filterValue)) {
-                        item.classList.remove('hidden');
-                        item.style.display = 'block'; // Ensure it's display block for non-hidden state
-                    } else {
-                        item.classList.add('hidden');
-                        item.style.display = 'none'; // Hide it completely after transition
-                    }
-                }, 100); 
-            });
-        });
-    });
-
-    // --- 2. Modal/Lightbox Logic ---
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    const captionText = document.getElementById('caption');
-    const closeBtn = document.querySelector('.close-btn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    // ----------------------------------------------------------------------
+    // 1. Gallery Lightbox Functionality 
+    // ----------------------------------------------------------------------
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const captionText = document.getElementById("caption");
+    const closeBtn = document.getElementsByClassName("close-btn")[0];
     
-    let currentImageIndex = 0;
-    let currentGalleryLinks = [];
-
-    // Get all gallery links
-    const galleryLinks = document.querySelectorAll('.gallery-link');
-
+    // Select all gallery links (including new additions)
+    const galleryLinks = document.querySelectorAll(".gallery-link"); 
+    
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    let currentIndex = 0;
+    const projectItems = Array.from(document.querySelectorAll('.gallery-item'));
+    
+    // Function to get visible links based on active filter
+    const getVisibleLinks = () => {
+        // Filter out items that are hidden by CSS display: none or class .hidden
+        return Array.from(document.querySelectorAll('.gallery-item:not(.hidden)')).map(item => item.querySelector('.gallery-link')).filter(link => link);
+    };
+    
     // Function to open the modal
-    function openModal(index) {
-        currentImageIndex = index;
-        const link = currentGalleryLinks[currentImageIndex];
-        
-        modal.style.display = 'block';
-        modalImage.src = link.getAttribute('href');
-        
-        // Get caption text from the <p> tag inside the gallery item
-        captionText.innerHTML = link.querySelector('p').innerText;
-    }
+    const openModal = (index, links) => {
+        if (links.length === 0) return;
+        currentIndex = index;
+        modal.style.display = "block";
+        modalImage.src = links[currentIndex].href;
+        captionText.innerHTML = links[currentIndex].querySelector('p').textContent;
+    };
     
-    // Event listener for all gallery links
-    galleryLinks.forEach((link, index) => {
+    // Event listener for opening the modal
+    galleryLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); 
-            
-            // Rebuild currentGalleryLinks based on visible items
-            // This ensures prev/next only cycle through the currently filtered category
-            currentGalleryLinks = Array.from(document.querySelectorAll('.gallery-item:not(.hidden) .gallery-link'));
-            
-            // Find the index of the clicked link within the current visible set
-            const visibleIndex = currentGalleryLinks.findIndex(l => l === link);
-            if (visibleIndex !== -1) {
-                openModal(visibleIndex);
+            e.preventDefault();
+            const visibleLinks = getVisibleLinks();
+            // Find the index of the clicked link within the currently visible links
+            const linkIndex = visibleLinks.findIndex(l => l.href === link.href);
+            if (linkIndex !== -1) {
+                openModal(linkIndex, visibleLinks);
             }
         });
     });
-
-    // Function to show the next image
-    function showNext() {
-        currentImageIndex = (currentImageIndex + 1) % currentGalleryLinks.length;
-        openModal(currentImageIndex);
-    }
-
-    // Function to show the previous image
-    function showPrev() {
-        currentImageIndex = (currentImageIndex - 1 + currentGalleryLinks.length) % currentGalleryLinks.length;
-        openModal(currentImageIndex);
-    }
     
-    // Event listeners for controls
-    closeBtn.onclick = () => { modal.style.display = 'none'; };
-    prevBtn.onclick = showPrev;
-    nextBtn.onclick = showNext;
+    // Close modal function
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+    };
     
     // Close modal when clicking outside the image
     window.onclick = (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     };
     
-    // Keyboard navigation
-    document.onkeydown = (e) => {
-        e = e || window.event;
-        if (modal.style.display === 'block') {
-            if (e.key === 'ArrowLeft') {
-                showPrev();
-            } else if (e.key === 'ArrowRight') {
-                showNext();
-            } else if (e.key === 'Escape') {
-                modal.style.display = 'none';
-            }
-        }
+    // Navigation function
+    const navigate = (direction) => {
+        const visibleLinks = getVisibleLinks();
+        if (visibleLinks.length === 0) return;
+        
+        currentIndex = (currentIndex + direction + visibleLinks.length) % visibleLinks.length;
+        modalImage.src = visibleLinks[currentIndex].href;
+        captionText.innerHTML = visibleLinks[currentIndex].querySelector('p').textContent;
     };
     
-    // Initial setup: ensure all gallery links are collected 
-    // This is useful if the user doesn't filter first.
-    currentGalleryLinks = Array.from(galleryLinks);
+    // Navigation listeners
+    prevBtn.addEventListener('click', () => navigate(-1));
+    nextBtn.addEventListener('click', () => navigate(1));
+    
+    // Keyboard navigation (optional)
+    document.addEventListener('keydown', (e) => {
+        if (modal.style.display === "block") {
+            if (e.key === "ArrowLeft") navigate(-1);
+            if (e.key === "ArrowRight") navigate(1);
+            if (e.key === "Escape") modal.style.display = "none";
+        }
+    });
 
+    
+    // ----------------------------------------------------------------------
+    // 2. Gallery Filtering Functionality (Updated for new buttons)
+    // ----------------------------------------------------------------------
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'active' class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add 'active' class to the clicked button
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            projectItems.forEach(item => {
+                const categories = item.getAttribute('data-category').split(' ');
+                
+                if (filter === 'all' || categories.includes(filter)) {
+                    item.classList.remove('hidden');
+                    item.style.display = 'block'; 
+                } else {
+                    item.classList.add('hidden');
+                    item.style.display = 'none'; 
+                }
+            });
+        });
+    });
 });
